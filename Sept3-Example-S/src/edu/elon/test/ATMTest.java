@@ -19,9 +19,10 @@ public class ATMTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void testDeposit() {
 		ATM atm = new ATM(100);
+		atm.deposit(-200);
 		atm.deposit(50);
 		double actual = atm.getBalance();
 		double expected = 150;
@@ -43,9 +44,10 @@ public class ATMTest {
 		assertEquals(expected, atm.toString());
 	}
 
-	@Test
+	@Test (expected = IllegalArgumentException.class)
 	public void testWithdraw() {
 		ATM atm = new ATM(100);
+		atm.withdraw(500);
 		atm.withdraw(50);
 		double actual = atm.getBalance();
 		double expected = 50;
